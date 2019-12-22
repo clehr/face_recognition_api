@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.post('/signin', (req, res) => {
 
     if (correctCredentials(req)) {
-        res.json("success");
+        res.json(database.users[0]);
     }
     if (wrongCredentials(req)) {
         res.status(400).json('error logging in');

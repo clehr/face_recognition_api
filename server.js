@@ -22,27 +22,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const database = {
-    users: [
-        {
-            id: '123',
-            name: 'Christian',
-            email: 'christian_lehr@outlook.de',
-            password: '4444',
-            entries: 0,
-            joined: new Date()
-        },
-        {
-            id: '124',
-            name: 'John',
-            email: 'john@gmail.com',
-            password: 'cookies',
-            entries: 0,
-            joined: new Date()
-        }
-    ]
-}
-
 app.get('/', (req, res) => {
     res.send(database.users);
 })
@@ -123,16 +102,4 @@ app.put('/image', (req, res) => {
 app.listen('3000', () => {
     console.log('app is running on port 3000');
 })
-
-function correctCredentials(req) {
-    const request = req.body;
-    const firstUser = database.users[0];
-
-    return request.email === firstUser.email
-        && request.password === firstUser.password;
-}
-
-function wrongCredentials(req) {
-    return !correctCredentials(req);
-}
 

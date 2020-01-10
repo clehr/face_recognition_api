@@ -60,7 +60,7 @@ app.post('/signin', (req, res) => {
 app.post('/register', (req, res) => {
     const { email, name } = req.body;
 
-    db('users')
+    return db('users')
         .returning('*')
         .insert({
             name: name,
